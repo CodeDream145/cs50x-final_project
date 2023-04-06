@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block body %}
+    <div class="row p-3 mx-auto w-25">
+        <h6 class="display-6 text-center" style="padding-bottom: 20px;">New User</h6>
+        
+        <form action="/register" method="post">
+            
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="username" placeholder="username" name="username">
+                <label for="floatingInput">User Name</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" autocomplete = "off" id="Password" placeholder="Password" name="password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="password" class="form-control" autocomplete = "off" id="Confirm_Password" placeholder="Confirm-Password" name="confirm_password">
+                <label for="floatingPassword">Confirm-Password</label>
+            </div>
+            
+            <div style="text-align: center; padding-top: 5%;">
+                <button type="submit" class="btn btn-outline-info btn-lg justify-content-center">Register</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
