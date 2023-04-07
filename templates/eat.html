@@ -18,10 +18,10 @@
             </thead>
             <tbody>
                 {% for row in dishes %}
-                <tr>
+                <tr id="menu_{{loop.index}}d">
                     <td>
                         <div class="container-fluid">
-                            <p id="menu_{{loop.index}}">{{row["dish"]}}</p>
+                            <p>{{row["dish"]}}</p>
                         </div>
                     </td>
                     <td>
@@ -29,7 +29,7 @@
                             <p>{{row["description"]}}</p>
                         </div>
                     </td>
-                    <td style="text-align: center;"><button type="button"class="btn btn-warning">Eat</button></td>
+                    <td style="text-align: center;"><button type="button"class="btn btn-warning" id="menu_{{loop.index}}" onclick="alert_fun(this.id)">Eat</button></td>
                 </tr>
                 {% endfor %}
                 {% if not dishes %}
