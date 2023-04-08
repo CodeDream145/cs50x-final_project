@@ -5,3 +5,8 @@ function alert_fun (menu_id) {
     menubutton.classList.add("disabled");
     menubutton.setAttribute('name', 'remove_dish')
 }
+
+function day_detect (button_id) {
+    button = document.getElementById(button_id);
+    button.setAttribute("name", "finished_day")
+}

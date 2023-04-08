@@ -144,8 +144,33 @@ def remove_dish():
     db.execute("INSERT INTO finished_dishes (user_id, dish_id) VALUES(?, ?)", session["user_id"],dish_id[0]["id"] )
     return redirect("/eat")
 
-@app.route("/slice")
+@app.route("/slice", methods=["GET", "POST"])
 @login_required
 def slice():
-    return render_template("slice.html")
+    days = ["0", "1", "2", "3", "4", "5", "\\0"]
+    status = db.execute("SELECT * FROM user_status WHERE user_id = ?", session["user_id"])
+    
+    
+    if request.method =="POST":
+        
+        finished_day = request.form.get("finished_day")
+        current_week = int(status[0]["current_week"])
+        days_passed = int(status[0]["days_passed"])
+
+        if not finished_day  == "\\0":
+            current_day = days[days.index(finished_day) + 1]
+        else:
+            current_day = days[0]
+            current_week = current_week + 1
+        
+        days_passed = days_passed + 1
+        
+        db.execute("UPDATE user_status SET current_day = ?, current_week = ?, days_passed = ?  WHERE user_id = ?", current_day, current_week, days_passed, session["user_id"])
+
+        return redirect("/slice")
+    
+    
+    
+
+    return render_template("slice.html", current_day = status[0]["current_day"], current_week = status[0]["current_week"], days = days)
 
