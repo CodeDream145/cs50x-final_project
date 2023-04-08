@@ -2,3 +2,12 @@ Authentication --> done
 
 if no dishes :
     print no dishess to show at the table. --> done
+
+
+--> history in dashboard
+
+@app.route("/history")
+@login_required
+def history():
+    eaten_dishes = db.execute("SELECT * FROM dishes WHERE id IN (SELECT dish_id FROM finished_dishes WHERE user_id = ?)", session["user_id"])
+    return render_template("eat.html", dishes=eaten_dishes) #as of now...

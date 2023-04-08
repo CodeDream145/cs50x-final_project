@@ -133,3 +133,13 @@ def eat():
 
         dishes = db.execute("SELECT * FROM dishes WHERE id IN (SELECT dish_id FROM user_dishes WHERE user_id == ?)", session["user_id"])
         return render_template("eat.html", dishes=dishes)
+    
+@app.route("/eat/remove", methods=["POST"])
+@login_required
+def remove_dish():
+    dish_name = request.form.get("remove_dish")
+    dish_id = db.execute("SELECT id FROM dishes WHERE dish = ?", dish_name)
+    db.execute("DELETE FROM user_dishes WHERE dish_id = ?", dish_id[0]["id"])
+    db.execute("INSERT INTO finished_dishes (user_id, dish_id) VALUES(?, ?)", session["user_id"],dish_id[0]["id"] )
+    return redirect("/eat")
+
