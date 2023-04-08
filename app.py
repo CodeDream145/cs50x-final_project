@@ -62,6 +62,7 @@ def register():
         hashed_password = generate_password_hash(password)
 
         id = db.execute("INSERT INTO users (user_name, hash) VALUES (?, ?)", username, hashed_password)
+        db.execute("INSERT INTO user_status(user_id) VALUES(?)", id)
         session["user_id"] = id
         session["user_name"] = username
 
@@ -142,4 +143,9 @@ def remove_dish():
     db.execute("DELETE FROM user_dishes WHERE dish_id = ?", dish_id[0]["id"])
     db.execute("INSERT INTO finished_dishes (user_id, dish_id) VALUES(?, ?)", session["user_id"],dish_id[0]["id"] )
     return redirect("/eat")
+
+@app.route("/slice")
+@login_required
+def slice():
+    return render_template("slice.html")
 
