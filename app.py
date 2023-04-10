@@ -40,24 +40,33 @@ def register():
         username = request.form.get("username")
         password = request.form.get("password")
         confirmation = request.form.get("confirm_password")
+
+
+        if not username and not password and not confirmation:
+            return render_template("register.html", name_error= "must provide user-name", pass_error="must provide password", user_name=username)        
         
+        if not username and not password:
+            return render_template("register.html", name_error= "must provide user-name", pass_error="must provide password", user_name=username)
         
         if not username:
-            return apology("must provide username", 400)
+            return render_template("register.html", name_error="must provide username")
         
-        elif not password:
-            return apology("must provide password", 400)
+        if not password and username:
+            return render_template("register.html", pass_error="must provide password", user_name=username)
     
-        elif not confirmation:
-            return apology("must provide confirmation-password", 400)
+        if not confirmation and username:
+            return render_template("register.html", con_pass_error="must provide confirmation-password", user_name=username)
+        
+        elif  len(password) < 8 or len(password) > 20:
+            return render_template("register.html", pass_error="Password must be between 8 to 20 characters", con_pass_error="Password must be between 8 to 20 characters", user_name=username)
 
         elif not password == confirmation:
-            return apology("password not matches", 400)
+            return render_template("register.html", con_pass_error="password not match", pass_error="password not match", user_name=username)
 
         user_exists = db.execute("SELECT * FROM users WHERE user_name = ?", username)
 
         if user_exists:
-            return apology("user already exists", 400)
+            return render_template("register.html", name_error="User Already Exists", user_name=username)
         
         hashed_password = generate_password_hash(password)
 
@@ -82,19 +91,22 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")        
         
-        if not username:
-            return apology("must provide username", 400)
+        if not username and not password:
+            return render_template("login.html", name_error="must provide username", pass_error="must provide password")
         
-        elif not password:
-            return apology("must provide password", 400)
+        if not username:
+            return render_template("login.html", name_error="must provide username")
+        
+        elif not password and username:
+            return render_template("login.html", pass_error="must provide password", user_name=username)
 
         user_exists = db.execute("SELECT * FROM users WHERE user_name = ?", username)
 
         if not user_exists :
-            return apology("Invalid username or Password", 400)
+            return render_template("login.html", name_error="Invaild User Name", user_name=username)
         
         elif not check_password_hash(user_exists[0]["hash"], password):
-            return apology("Invalid password", 400)
+            return render_template("login.html", pass_error="Invalid Pasword")
         
         session["user_id"] = user_exists[0]["id"]
         session["user_name"] = username
@@ -120,11 +132,21 @@ def eat():
         dish = request.form.get("dish")
         description = request.form.get("description")
 
-        if not dish:
-            return apology("please provide Dish Name")
-        elif not description:
-            return apology("please provide description")
+        dishes = db.execute("SELECT * FROM dishes WHERE id IN (SELECT dish_id FROM user_dishes WHERE user_id == ?)", session["user_id"])
+
+        if not dish and not description:
+            return render_template("eat.html", name_error="Please Provide Dish Name", des_error="Please Provide Description", dishes=dishes)
+        elif description and not dish:
+            return render_template("eat.html", name_error="Please Provide Dish Name", dishes=dishes, description=description)
+        elif len(description) > 3000:
+            return render_template("eat.html", des_error="Description should not exceed 3000 chatracters ", dishes=dishes, name=dish, description=description)
+        elif len(dish) > 35:
+            return render_template("eat.html", name_error="Dish name should not exceed 35 chatracters ", dishes=dishes, name=dish, description=description)
+
+        elif dish and not description:
+            return render_template("eat.html", des_error="Please Provide Description", dishes=dishes, name=dish)
         
+                
         dish_id = db.execute("INSERT INTO dishes (dish, description) VALUES(?, ?)", dish, description)
         db.execute("INSERT INTO user_dishes (user_id, dish_id) VALUES(?, ?)", session["user_id"], dish_id)
         goals_completed  = db.execute("SELECT goals_completed FROM user_status WHERE user_id = ?", session["user_id"])
@@ -138,11 +160,14 @@ def eat():
 
         dishes = db.execute("SELECT * FROM dishes WHERE id IN (SELECT dish_id FROM user_dishes WHERE user_id == ?)", session["user_id"])
         return render_template("eat.html", dishes=dishes)
-    
+
+
 @app.route("/eat/remove", methods=["POST"])
 @login_required
 def remove_dish():
     dish_name = request.form.get("remove_dish")
+    if not dish_name:
+        return apology("Trying Something ha...", 400)
     dish_id = db.execute("SELECT id FROM dishes WHERE dish = ?", dish_name)
     db.execute("DELETE FROM user_dishes WHERE dish_id = ?", dish_id[0]["id"])
     db.execute("INSERT INTO finished_dishes (user_id, dish_id) VALUES(?, ?)", session["user_id"],dish_id[0]["id"] )

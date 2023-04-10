@@ -10,20 +10,50 @@
         
         <form action="/register" method="post">
             
+            {% if name_error %}
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="username" autocomplete="off" placeholder="username" name="username">
+                <input type="text" class="form-control is-invalid" id="floatingInput" autocomplete="off" placeholder="username" name="username" value="{{user_name}}">
+                <label for="floatingInput">User Name</label>
+                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    {{name_error}}
+                  </div>
+            </div>
+            {% else %}
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" autocomplete="off" placeholder="username" name="username" value="{{user_name}}">
                 <label for="floatingInput">User Name</label>
             </div>
+            {% endif %}
 
+            {% if pass_error %}
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" autocomplete = "off" id="Password" placeholder="Password" name="password">
+                <input type="password" class="form-control is-invalid" autocomplete = "off" id="floatingPassword" placeholder="Password" name="password">
+                <label for="floatingPassword">Password</label>
+                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    {{pass_error}}
+                  </div>
+            </div>
+            {% else %}
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" autocomplete = "off" id="floatingPassword" placeholder="Password" name="password">
                 <label for="floatingPassword">Password</label>
             </div>
+            {% endif %}
 
+            {% if con_pass_error %}
             <div class="form-floating">
-                <input type="password" class="form-control" autocomplete = "off" id="Confirm_Password" placeholder="Confirm-Password" name="confirm_password">
-                <label for="floatingPassword">Confirm-Password</label>
+                <input type="password" class="form-control is-invalid" autocomplete = "off" id="floatingPassword" placeholder="Password" name="confirm_password">
+                <label for="floatingPassword">Confirm Password</label>
+                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    {{con_pass_error}}
+                  </div>
             </div>
+            {% else %}
+            <div class="form-floating">
+                <input type="password" class="form-control" autocomplete = "off" id="floatingPassword" placeholder="Password" name="confirm_password">
+                <label for="floatingPassword">Confirm Password</label>
+            </div>
+            {% endif %}
             
             <div style="text-align: center; padding-top: 5%;">
                 <button type="submit" class="btn btn-outline-info btn-lg justify-content-center">Register</button>

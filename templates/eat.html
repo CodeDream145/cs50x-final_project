@@ -49,14 +49,36 @@
 
     <div class="row mt-3 p-4">
         <form action="/eat" method="post">
+            {% if name_error %}
             <div class="mb-3 w-25">
                 <label for="dish" class="form-label">Dish</label>
-                <input type="text" class="form-control col-sm-10" id="dish" placeholder="Name" name="dish">
+                <input type="text" class="form-control col-sm-10 is-invalid" id="dish" placeholder="Name" name="dish">
+                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    {{name_error}}
+                  </div>
             </div>
+            {% else %}
+            <div class="mb-3 w-25">
+                <label for="dish" class="form-label">Dish</label>
+                <input type="text" class="form-control col-sm-10 " id="dish" placeholder="Name" name="dish" value="{{name}}">
+            </div>
+            {% endif %}
+
+            {% if des_error %}
             <div class="mb-3 w-75">
                 <label for="description" class="form-label">How to Eat it !</label>
-                <textarea class="form-control" id="description" name="description" placeholder="Description about your dish" rows="3"></textarea>
+                <textarea class="form-control is-invalid" id="description" name="description" placeholder="Description about your dish" rows="3">{{description}}</textarea>
+                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    {{des_error}}
+                  </div>
             </div>
+            {% else %}
+            <div class="mb-3 w-75">
+                <label for="description" class="form-label">How to Eat it !</label>
+                <textarea class="form-control" id="description" name="description" placeholder="Description about your dish" rows="3">{{description}}</textarea>
+            </div>
+            {% endif %}
+
             <div class="mb-3">
                 <button type="submit" class="btn btn-outline-warning">Add To Menu</button>
             </div>
