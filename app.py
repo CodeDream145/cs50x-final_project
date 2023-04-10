@@ -127,6 +127,10 @@ def eat():
         
         dish_id = db.execute("INSERT INTO dishes (dish, description) VALUES(?, ?)", dish, description)
         db.execute("INSERT INTO user_dishes (user_id, dish_id) VALUES(?, ?)", session["user_id"], dish_id)
+        goals_completed  = db.execute("SELECT goals_completed FROM user_status WHERE user_id = ?", session["user_id"])
+
+        db.execute("UPDATE user_status SET goals_completed = ? WHERE user_id = ?", int(goals_completed[0]["goals_completed"]) + 1, session["user_id"])
+        
         
         return redirect("/eat")
     
@@ -169,8 +173,13 @@ def slice():
 
         return redirect("/slice")
     
-    
-    
 
     return render_template("slice.html", current_day = status[0]["current_day"], current_week = status[0]["current_week"], days = days)
 
+@app.route("/dashboard")
+@login_required
+def dashboard():
+
+    status = db.execute("SELECT * FROM user_status WHERE user_id = ?", session["user_id"])
+
+    return render_template("dashboard.html", status=status)
