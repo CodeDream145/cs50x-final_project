@@ -1,8 +1,9 @@
-Authentication --> done 
+17/4: 10:30pm 
+    {
 
-if no dishes :
-    print no dishess to show at the table. --> done
-
+        0.Create hear page.
+        1.Think of to fill eat, slice and dashboard.
+    }
 
 --> history in dashboard
 

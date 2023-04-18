@@ -1,0 +1,43 @@
+.blackbg {
+    background: #181818;
+}
+
+.lightbg {
+    background: #CDCDCD;
+}
+
+.formyfu {
+text-align: center;
+height: 71px;
+
+font-family: 'Lancelot';
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 71px;
+color: white;
+
+}
+
+.iconprop{
+    float:right;
+    padding: 4px 4px 4px;
+}
+
+.txt_af_img{
+    display: inline;
+    font-size: 25px;
+    text-indent: 4em;
+    text-align: justify;
+    color: rgba(138, 138, 138, 0.804);
+}
+
+.txt_wi_img{
+    display: inline;
+    font-size: 25px;
+    padding-left: 20px;
+    text-align: justify;
+    text-indent: 4em;
+    color: rgba(138, 138, 138, 0.804);
+    padding-top: 1%;
+}

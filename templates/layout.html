@@ -6,7 +6,7 @@
         <!--bootstrap-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-        <script src="static/jscript.js"></script>
+        <script src="static/jscript.js" rel="stylesheet"></script>
         <link href="static/styles.css" rel="stylesheet">
         <title>{% block title %}{% endblock %}</title>
 
@@ -16,77 +16,86 @@
         
         <div class="container-fluid">
           
-          <div class="row">
-
-            <nav class="navbar bg-body-tertiary">
-              <div class="container-fluid" style="justify-content: center;">
-                <a class="navbar-brand" href="#">
-                  <img src="static/sparrow.png" alt="Logo" width="50" height="auto">
-                  LOGO
+          <div class="row blackbg formyfu" >
+                <a class="navbar-brand" href="/">
+                  FOR FUTURE ME
                 </a>
-              </div>
-          </nav>  
-
           </div>
-          
-          <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <div class="container-fluid" style="padding: 0;" >
-                <a class="navbar-brand" href="index.html" style="padding-left: 10px; padding-right: 20px;">
-                  {% if session["user_name"] %}
-                  <img class="rounded" src="static/DAVINCI.jpg" alt="Logo" style="object-fit: cover; width: 40px; height:40px;">
-                    WELCOME, {{session["user_name"]}}
-                  {% else %}
-                    HELLO, WORLD
-                  {% endif %}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <br>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  {% if session["user_id"] %}
-                  <ul class="navbar-nav">
-                    <li class="nav-item">
-                      <a class="nav-link" style="color: rgb(50, 48, 48);"aria-current="page" href="/"><h5 style="font-weight: lighter;">Home</h5></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" style="color: rgb(50, 48, 48);"aria-current="page" href="/dashboard"><h5 style="font-weight: lighter;">Dashboard</h5></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" style="color: rgb(50, 48, 48);"aria-current="page" href="/slice"><h5 style="font-weight: lighter;">Slice</h5></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" style="color: rgb(50, 48, 48);"aria-current="page" href="/eat"><h5 style="font-weight: lighter;">Eat!</h5></a>
-                    </li>
-                  </ul>
-                  <div class="container-fluid"  style="max-width: 500px; margin-right: 10px;">
-                    <a class="nav-link iconprop" style="text-align: end;"href="/logout">Log Out</a>                    
-                  {% else %}
-                  <ul class="navbar-nav">
-                    <li class="nav-item">
-                      <a class="nav-link active" style="color: rgb(50, 48, 48);"aria-current="page" href="/login"><h5 style="font-weight: lighter;">Login</h5></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" style="color: rgb(50, 48, 48);"aria-current="page" href="/register"><h5 style="font-weight: lighter;">Register</h5></a>
-                    </li>
-                  </ul>
-                  {% endif %}
+            
+            <div class="row lightbg">
+              <nav class="navbar navbar-expand-lg navbar-light lightbg ">
+                <div class="container-fluid" style="padding: 0;" >
+                  <a class="navbar-brand" href="/" style="padding-left: 10px; padding-right: 20px;">
+                    {% if session["user_name"] %}
+                    <img class="rounded" src="static/logo_2.png" alt="Logo" style="width: 40px; height:40px;">
+                      WELCOME, {{session["user_name"]}}
+                    {% else %}
+                    <img class="rounded" src="static/logo_2.png" alt="Logo" style="width: 40px; height:40px;">
+                    {% endif %}
+                  </a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <br>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    {% if session["user_id"] %}
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link" style="color: rgb(50, 48, 48);"aria-current="page" href="/"><h5 style="font-weight: lighter;">Home</h5></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" style="color: rgb(50, 48, 48);"aria-current="page" href="/dashboard"><h5 style="font-weight: lighter;">Dashboard</h5></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" style="color: rgb(50, 48, 48);"aria-current="page" href="/slice"><h5 style="font-weight: lighter;">Slice</h5></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" style="color: rgb(50, 48, 48);"aria-current="page" href="/eat"><h5 style="font-weight: lighter;">Eat!</h5></a>
+                      </li>
+                    </ul>
+                    <div class="container-fluid"  style="max-width: 500px; margin-right: 10px;">
+                      <a class="nav-link iconprop" style="text-align: end;"href="/logout">Log Out</a>
+                    </div>           
+                    {% else %}
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link active" style="color: rgb(50, 48, 48);"aria-current="page" href="/login"><h5 style="font-weight: lighter;">Login</h5></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" style="color: rgb(50, 48, 48);"aria-current="page" href="/register"><h5 style="font-weight: lighter;">Register</h5></a>
+                      </li>
+                    </ul>
+                    {% endif %}
                   </div>
                 </div>
-              </div>
-            </nav>
-          </div>
-          
-          {% if get_flashed_messages() %}
-            <header>
-                <div class="alert alert-primary mb-0 text-center" role="alert">
-                    {{ get_flashed_messages() | join(" ") }}
-                </div>
-            </header>
-          {% endif %}
+              </nav>
+            </div>
             
-          {% block body %}{% endblock %}<!--use "div-row"-->
+            {% if get_flashed_messages() %}
+              <header>
+                  <div class="alert alert-primary mb-0 text-center" role="alert">
+                      {{ get_flashed_messages() | join(" ") }}
+                  </div>
+              </header>
+            {% endif %}
+            
+            <div class="row blackbg">
+            {% block body %}{% endblock %}<!--use "div-row"-->
+            </div>
+
+            <div class="row lightbg">
+              <!--footer here-->
+
+              <div class="container-fluid lightbg"  style="max-width:auto; margin-right: 10px;">
+                <a href="#" style="padding: 4px 4px 4px; float: left;"> <img src="static/logo_2.png" alt="logo" width="25" height="25"></a>
+                <a style="padding: 4px 4px 4px; float: left; color: black;" href="/">&#xA9; 2023 Copyright: Future Me</a>
+                <!--something at center-->
+                <a class="iconprop" href="#"> <img src="static/discord.png" alt="discord profile" width="25" height="25"></a>
+                <a class="iconprop" href="#"> <img src="static/twitter.png" alt="twitter profile" width="25" height="25"></a>
+                <a class="iconprop" href="https://github.com/CodeDream145"> <img src="static/github.png" alt="github profile" width="25" height="25"></a>
+
+              </div>
+            </div>
 
         </div>
 
