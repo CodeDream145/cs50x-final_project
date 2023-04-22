@@ -41,3 +41,18 @@ color: white;
     color: rgba(138, 138, 138, 0.804);
     padding-top: 1%;
 }
+
+.text_in_table{
+    font-size: 25px;
+    padding-left: 20px;
+    text-align: left;
+    text-indent: 4em;
+    color: rgba(138, 138, 138, 0.804);
+}
+
+.about_text{
+    font-size: 18px;
+    text-indent: 4em;
+    text-align: justify;
+    color: rgba(138, 138, 138, 0.804);
+}

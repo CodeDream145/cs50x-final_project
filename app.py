@@ -111,8 +111,6 @@ def login():
         session["user_id"] = user_exists[0]["id"]
         session["user_name"] = username
 
-        flash("!! Logged in successfully !!")
-
         return redirect("/")
     
     return render_template("login.html")  
@@ -208,3 +206,8 @@ def dashboard():
     status = db.execute("SELECT * FROM user_status WHERE user_id = ?", session["user_id"])
 
     return render_template("dashboard.html", status=status)
+
+@app.route("/hear")
+@login_required
+def hear():
+    return render_template("hear.html")

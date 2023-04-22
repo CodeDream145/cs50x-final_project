@@ -5,9 +5,26 @@
 {% endblock %}
 
 {% block body %}
+    <div classs="row p-4 mb-3 blackbg" style="padding-top: 20px;">
+        <p>
+            <a class="show" data-bs-toggle="collapse" href="#collapse" role="button" style="border-radius: 5%; color: #ffcd39;" aria-expanded="false" aria-controls="collapseExample">
+              About Eat &#8595;
+            </a>
+          </p>
+          <div class="collapse" id="collapse">
+            <div class="card card-body blackbg about_text" style="color: rgba(138, 138, 138, 0.804);border-color:#d5ad35; ">
+                <p>Before I am what I am now, I was always in search of a single question: Why am I not doing things that will make me better?". During my practise of this method, I found that I did not have enough reason and did not know what I wanted to do really. And I inserted a new step to this method taken from the book "Eat that Frog".<br>And here it is:</p>
+                <p>&#36; Write down what you want to do inside the dish table and add it to your stack of dishes.</p>
+                <p>&#36; The dish may be your goal or the thing you want to do today (only today). As this method focuses only on one day.</p> 
+                <p>&#36; Name your dish and describe it clearly and briefly.</p> 
+                <p>&#36; And eat it when you have done it.</p>
+            </div>
+          </div>
+    </div>
+    
     <div class="row p-4 mb-3">
         
-        <table class="table table-bordered" style="table-layout: auto;">
+        <table class="table table-bordered" style="table-layout: auto; color: rgba(138, 138, 138, 0.84);">
 
             <thead class="table-dark">
                 <tr style="text-align: center;">
@@ -37,7 +54,7 @@
                 {% endfor %}
                 {% if not dishes %}
                     <tr>
-                        <td><h5>No Dishes yet...Make your Dish.</h5></td>
+                        <td><h5 style="color: rgba(138, 138, 138, 0.880);">No Dishes yet...Make your Dish.</h5></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -51,31 +68,31 @@
         <form action="/eat" method="post">
             {% if name_error %}
             <div class="mb-3 w-25">
-                <label for="dish" class="form-label">Dish</label>
-                <input type="text" class="form-control col-sm-10 is-invalid" id="dish" placeholder="Name" name="dish">
+                <label for="dish" class="form-label" style="color: rgba(138, 138, 138, 0.880);">Dish</label>
+                <input type="text" class="form-control col-sm-10 is-invalid" style="background-color: #f6ffd4d7;" id="dish" placeholder="Name" name="dish">
                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     {{name_error}}
                   </div>
             </div>
             {% else %}
             <div class="mb-3 w-25">
-                <label for="dish" class="form-label">Dish</label>
-                <input type="text" class="form-control col-sm-10 " id="dish" placeholder="Name" name="dish" value="{{name}}">
+                <label for="dish" class="form-label" style="color: rgba(138, 138, 138, 0.880);">Dish</label>
+                <input style="background-color: #f6ffd4d7; color: black;" type="text" class="form-control col-sm-10 " id="dish" placeholder="Name" name="dish" value="{{name}}">
             </div>
             {% endif %}
 
             {% if des_error %}
             <div class="mb-3 w-75">
-                <label for="description" class="form-label">How to Eat it !</label>
-                <textarea class="form-control is-invalid" id="description" name="description" placeholder="Description about your dish" rows="3">{{description}}</textarea>
+                <label for="description" class="form-label" style="color: rgba(138, 138, 138, 0.880);">How to Eat it !</label>
+                <textarea class="form-control is-invalid" id="description" name="description" placeholder="Description about your dish" rows="3" style="background-color: #f6ffd4d7; color: black;">{{description}}</textarea>
                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     {{des_error}}
                   </div>
             </div>
             {% else %}
             <div class="mb-3 w-75">
-                <label for="description" class="form-label">How to Eat it !</label>
-                <textarea class="form-control" id="description" name="description" placeholder="Description about your dish" rows="3">{{description}}</textarea>
+                <label for="description" class="form-label" style="color: rgba(159, 159, 159, 0.88);">How to Eat it !</label>
+                <textarea class="form-control" id="description" name="description" placeholder="Description about your dish" rows="3" style="background-color: #f6ffd4d7; color: black;">{{description}}</textarea>
             </div>
             {% endif %}
 
