@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block body %}
+    
+    <div classs="row p-4 mb-3 blackbg" style="padding-top: 20px;">
+        <p>
+            <a class="show" data-bs-toggle="collapse" href="#collapsedash" role="button" style="border-radius: 5%; color: #e88f3b;" aria-expanded="false" aria-controls="collapseExample">
+            About Dashboard &#8595;
+            </a>
+        </p>
+        <div class="collapse" id="collapsedash">
+            <div class="card card-body blackbg about_text" style="color: rgba(138, 138, 138, 0.804);border-color:#d08036; ">
+                <p>&#36; You are on the your Road.</p>
+                <p>&#36; See how well you are rinding on your own road.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row p-3">
+        <h1 class="display-6 text-center" style="color: rgba(138, 138, 138, 0.84);">STATS</h1>
+        <div class="table-responsive mx-auto w-50 text-center p-3">
+        <table class="table align-middle table-bordered" style="color: rgba(138, 138, 138, 0.84);">
+            <tbody style="font-size: 25px;" class="text_in_table">
+                <tr>
+                    <td>Weeks Passed </td>
+                    <td style="color: #d68438f3;">{{status[0].current_week}}</td>
+                </tr>
+                <tr>
+                    <td>Days Passed </td>
+                    <td style="color: #d68438f3;">{{status[0].days_passed}}</td>
+                </tr>
+                <tr>
+                    <td>Goals Eaten </td>
+                    <td style="color: #d68438f3;">{{status[0].goals_completed}}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock %}
