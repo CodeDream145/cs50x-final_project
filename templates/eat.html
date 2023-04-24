@@ -7,8 +7,8 @@
 {% block body %}
     <div classs="row p-4 mb-3 blackbg" style="padding-top: 20px;">
         <p>
-            <a class="show" data-bs-toggle="collapse" href="#collapse" role="button" style="border-radius: 5%; color: #ffcd39;" aria-expanded="false" aria-controls="collapseExample">
-              About Eat &#8595;
+            <a class="show" data-bs-toggle="collapse" href="#collapse" role="button" style="border-radius: 5%; color: #ffcd39; font-size: large;" aria-expanded="false" aria-controls="collapseExample">
+              Click: About Eat &#8595;
             </a>
           </p>
           <div class="collapse" id="collapse">
@@ -39,12 +39,12 @@
                 <tr id="menu_{{loop.index}}">
                     <td>
                         <div class="container-fluid">
-                            <p id="dish_name_{{loop.index}}">{{row["dish"]}}</p>
+                            <p style="color:rgb(179, 177, 177); font-size: large;" id="dish_name_{{loop.index}}">{{row["dish"]}}</p>
                         </div>
                     </td>
                     <td>
                         <div class="container-fluid">
-                            <p>{{row["description"]}}</p>
+                            <p style="color:  rgb(179, 177, 177); font-size: large;">{{row["description"]}}</p>
                         </div>
                     </td>
                     <form action="/eat/remove" method="post">
@@ -54,7 +54,7 @@
                 {% endfor %}
                 {% if not dishes %}
                     <tr>
-                        <td><h5 style="color: rgba(138, 138, 138, 0.880);">No Dishes yet...Make your Dish.</h5></td>
+                        <td><h5 style="color: rgb(179, 177, 177);">No Dishes yet...Make your Dish.</h5></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -64,35 +64,35 @@
         </table>
     </div>
 
-    <div class="row mt-3 p-4">
-        <form action="/eat" method="post">
+    <div class="row mt-3 p-4" >
+        <form action="/eat" method="post" style="padding-bottom: 40px;">
             {% if name_error %}
-            <div class="mb-3 w-25">
-                <label for="dish" class="form-label" style="color: rgba(138, 138, 138, 0.880);">Dish</label>
-                <input type="text" class="form-control col-sm-10 is-invalid" style="background-color: #f6ffd4d7;" id="dish" placeholder="Name" name="dish">
+            <div class="mb-3 w-25">Z
+                <label for="dish" class="form-label" style="color: rgb(179, 177, 177);">Dish</label>
+                <input type="text" class="form-control col-sm-10 is-invalid" style="background-color: #fbf0b3;" id="dish" placeholder="Name" name="dish">
                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     {{name_error}}
                   </div>
             </div>
             {% else %}
             <div class="mb-3 w-25">
-                <label for="dish" class="form-label" style="color: rgba(138, 138, 138, 0.880);">Dish</label>
-                <input style="background-color: #f6ffd4d7; color: black;" type="text" class="form-control col-sm-10 " id="dish" placeholder="Name" name="dish" value="{{name}}">
+                <label for="dish" class="form-label" style="color: rgb(179, 177, 177);">Dish</label>
+                <input style="background-color: #fbf0b3; color: black;" type="text" class="form-control col-sm-10 " id="dish" placeholder="Name" name="dish" value="{{name}}">
             </div>
             {% endif %}
 
             {% if des_error %}
             <div class="mb-3 w-75">
-                <label for="description" class="form-label" style="color: rgba(138, 138, 138, 0.880);">How to Eat it !</label>
-                <textarea class="form-control is-invalid" id="description" name="description" placeholder="Description about your dish" rows="3" style="background-color: #f6ffd4d7; color: black;">{{description}}</textarea>
+                <label for="description" class="form-label" style="color: rgb(179, 177, 177);">How to Eat it !</label>
+                <textarea class="form-control is-invalid" id="description" name="description" placeholder="Description about your dish" rows="3" style="background-color: #fbf0b3; color: black;">{{description}}</textarea>
                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     {{des_error}}
                   </div>
             </div>
             {% else %}
             <div class="mb-3 w-75">
-                <label for="description" class="form-label" style="color: rgba(159, 159, 159, 0.88);">How to Eat it !</label>
-                <textarea class="form-control" id="description" name="description" placeholder="Description about your dish" rows="3" style="background-color: #f6ffd4d7; color: black;">{{description}}</textarea>
+                <label for="description" class="form-label" style="color: rgb(179, 177, 177);">How to Eat it !</label>
+                <textarea class="form-control" id="description" name="description" placeholder="Description about your dish" rows="3" style="background-color: #fbf0b3; color: black;">{{description}}</textarea>
             </div>
             {% endif %}
 

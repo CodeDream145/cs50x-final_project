@@ -7,11 +7,11 @@
 {% block body %}
     <div classs="row p-4 mb-3 blackbg" style="padding-top: 20px;">
         <p>
-            <a class="show" data-bs-toggle="collapse" href="#collapseslice" role="button" style="border-radius: 5%; color: #27d382;" aria-expanded="false" aria-controls="collapseExample">
-            About Slice &#8595;
+            <a class="show" data-bs-toggle="collapse" href="#collapseslice" role="button" style="border-radius: 5%; color: #27d382; font-size: large;" aria-expanded="false" aria-controls="collapseExample">
+            Click: About Slice &#8595;
             </a>
         </p>
-        <div class="collapse" id="collapseslice">
+        <div class="collapse" id="collapseslice" >
             <div class="card card-body blackbg about_text" style="color: rgba(138, 138, 138, 0.804); border-color:#1dac69;">
                 <p>	It's a pleasure giving step. Done the day as you planned (hey, sometimes there will be some unexpected dish that arrives, so please don't get regret, create a new plan). Have you finished this day as a well-disciplined day? Then it's time to slice it up. Work hard and focus on one thing all day, from 0 to 5. But on Nul day(\0) don't ever think of that main work and enjoy the day as per your wish. You may think about the Nul day after slicing any prior days, but it's good to have a plan for the nul day. After the nul day you will be passed to the next week.</p>
                 <p>&#36; Click on the day to slice.</p>
@@ -20,10 +20,10 @@
             </div>
         </div>
     </div>
-    <div class="row p-4">
-        <h1 class= "display-3" style="text-align: center; color: rgba(138, 138, 138, 0.880);">Slice it Buddy...</h1>
+    <div class="row p-4" style="margin-top: 3%;">
+        <h1 class= "display-3" style="text-align: center; color: rgb(179, 177, 177);">Slice it Buddy...</h1>
         <div style="text-align: center; padding-top: 30px;">
-            <h5 style="color: rgba(138, 138, 138, 0.804);">WEEK {{current_week}}:</h5>
+            <h5 style="color: rgba(179, 177, 177, 0.948);">WEEK {{current_week}}:</h5>
             <br>
             <div style= "display: inline-block">
             {% for day in days %}
@@ -43,5 +43,7 @@
             {% endfor %}
             </div>
         </div>
+    </div>
+    <div class="row p-3 blackbg" style="height: 100%;">
     </div>
 {% endblock %}

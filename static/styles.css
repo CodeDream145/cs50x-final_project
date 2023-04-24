@@ -29,7 +29,7 @@ color: white;
     font-size: 25px;
     text-indent: 4em;
     text-align: justify;
-    color: rgba(138, 138, 138, 0.804);
+    color: rgba(179, 177, 177, 0.855);
 }
 
 .txt_wi_img{
@@ -38,7 +38,7 @@ color: white;
     padding-left: 20px;
     text-align: justify;
     text-indent: 4em;
-    color: rgba(138, 138, 138, 0.804);
+    color: rgba(179, 177, 177, 0.855);
     padding-top: 1%;
 }
 
@@ -47,12 +47,23 @@ color: white;
     padding-left: 20px;
     text-align: left;
     text-indent: 4em;
-    color: rgba(138, 138, 138, 0.804);
+    color: rgba(179, 177, 177, 0.855);
 }
 
 .about_text{
     font-size: 18px;
     text-indent: 4em;
     text-align: justify;
-    color: rgba(138, 138, 138, 0.804);
+    color: rgba(179, 177, 177, 0.855);
+}
+
+.under_hearing{
+    text-align: center; 
+    color:#2dc2c2d2; 
+    font-size: 25px;
+}
+
+body {
+    background-color: #181818;
+
 }
