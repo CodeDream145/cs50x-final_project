@@ -1,4 +1,4 @@
 flask
 cs50
-flask_sesion
+flask_session
 werkzeug.security
