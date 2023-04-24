@@ -12,6 +12,7 @@ distro-info===1.1build1
 Flask==2.2.3
 Flask-Session==0.4.0
 greenlet==2.0.2
+gunicorn==20.1.0
 gyp==0.1
 httplib2==0.20.2
 importlib-metadata==4.6.4
