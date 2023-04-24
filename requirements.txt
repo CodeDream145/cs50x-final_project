@@ -1,3 +1,4 @@
+pip
 Babel==2.8.0
 blinker==1.4
 cachelib==0.10.2
