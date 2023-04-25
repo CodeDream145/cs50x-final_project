@@ -69,7 +69,7 @@
             {% if name_error %}
             <div class="mb-3 w-25">
                 <label for="dish" class="form-label" style="color: rgb(179, 177, 177);">Dish</label>
-                <input type="text" class="form-control col-sm-10 is-invalid" style="background-color: #fbf0b3;" id="dish" placeholder="Name" name="dish">
+                <input type="text" class="form-control col-sm-10 is-invalid" style="background-color:  rgb(167, 166, 166);" id="dish" placeholder="Name" name="dish">
                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     {{name_error}}
                   </div>
@@ -77,14 +77,14 @@
             {% else %}
             <div class="mb-3 w-25">
                 <label for="dish" class="form-label" style="color: rgb(179, 177, 177);">Dish</label>
-                <input style="background-color: #fbf0b3; color: black;" type="text" class="form-control col-sm-10 " id="dish" placeholder="Name" name="dish" value="{{name}}">
+                <input style="background-color:  rgb(167, 166, 166); color: black;" type="text" class="form-control col-sm-10 " id="dish" placeholder="Name" name="dish" value="{{name}}">
             </div>
             {% endif %}
 
             {% if des_error %}
             <div class="mb-3 w-75">
                 <label for="description" class="form-label" style="color: rgb(179, 177, 177);">How to Eat it !</label>
-                <textarea class="form-control is-invalid" id="description" name="description" placeholder="Description about your dish" rows="3" style="background-color: #fbf0b3; color: black;">{{description}}</textarea>
+                <textarea class="form-control is-invalid" id="description" name="description" placeholder="Description about your dish" rows="3" style="background-color: rgb(167, 167, 166); color: black;">{{description}}</textarea>
                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     {{des_error}}
                   </div>
@@ -92,7 +92,7 @@
             {% else %}
             <div class="mb-3 w-75">
                 <label for="description" class="form-label" style="color: rgb(179, 177, 177);">How to Eat it !</label>
-                <textarea class="form-control" id="description" name="description" placeholder="Description about your dish" rows="3" style="background-color: #fbf0b3; color: black;">{{description}}</textarea>
+                <textarea class="form-control" id="description" name="description" placeholder="Description about your dish" rows="3" style="background-color:  rgb(167, 166, 166); color: black;">{{description}}</textarea>
             </div>
             {% endif %}
 
