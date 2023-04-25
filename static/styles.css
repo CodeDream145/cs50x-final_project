@@ -6,18 +6,6 @@
     background: #CDCDCD;
 }
 
-.formyfu {
-text-align: center;
-height: 71px;
-
-font-family: 'Lancelot';
-font-style: normal;
-font-weight: 400;
-font-size: 59px;
-line-height: 71px;
-color: white;
-
-}
 
 .iconprop{
     float:right;
@@ -103,3 +91,29 @@ body {
    width: auto;
     }
 }
+
+.formyfu {
+    text-align: center;
+    height: 71px;
+    
+    font-family: 'Times New Roman', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 71px;
+    color: white;
+}
+
+@media only screen and (max-width: 500px){
+    .formyfu { 
+        text-align: center;
+        height: 71px;
+        
+        font-family: 'Times New Roman', serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 71px;
+        color: white;
+        }
+    }
