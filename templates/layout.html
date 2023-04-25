@@ -16,7 +16,7 @@
         
         <div class="container-fluid">
           
-          <div class="row blackbg formyfu" >
+          <div class="row blackbg formyfu justify-content-md-center">
                 <a class="navbar-brand" href="/">
                   FOR FUTURE ME
                 </a>
@@ -76,7 +76,7 @@
             
             {% if get_flashed_messages() %}
               <header>
-                  <div class="alert alert-primary mb-0 text-center blackbg" role="alert">
+                  <div class="alert alert-warning mb-0 text-center blackbg" style="color: #ffc1ca; border-color:#47001f;" role="alert">
                       {{ get_flashed_messages() | join(" ") }}
                   </div>
               </header>

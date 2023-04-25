@@ -1,9 +1,5 @@
-17/4: 10:30pm 
-    {
-
-        0.Create hear page.
-        1.Think of to fill eat, slice and dashboard.
-    }
+Inside home :
+    Add the video for "what it for" & "about how to use this site" 
 
 --> history in dashboard
 

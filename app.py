@@ -74,7 +74,7 @@ def register():
         session["user_id"] = id
         session["user_name"] = username
 
-        flash("🎉 Congratulations You started your progress for lifting-up in life 🎉")
+        flash("🎉 Congratulations! You took a major step towards improving your lot in life. 🎉")
         
         return redirect("/")
     
@@ -105,7 +105,7 @@ def login():
             return render_template("login.html", name_error="Invaild User Name", user_name=username)
         
         elif not check_password_hash(user_exists[0]["hash"], password):
-            return render_template("login.html", pass_error="Invalid Pasword")
+            return render_template("login.html", pass_error="Invalid Pasword", user_name=username)
         
         session["user_id"] = user_exists[0]["id"]
         session["user_name"] = username

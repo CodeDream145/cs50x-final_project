@@ -13,7 +13,7 @@ height: 71px;
 font-family: 'Lancelot';
 font-style: normal;
 font-weight: 400;
-font-size: 64px;
+font-size: 59px;
 line-height: 71px;
 color: white;
 
@@ -66,4 +66,40 @@ color: white;
 body {
     background-color: #181818;
 
+}
+
+.resdashboard{
+        width: 50%;
+    
+}
+
+@media only screen and (max-width: 900px){
+    .resdashboard { 
+       width: auto;
+    }
+}
+
+.resimg{
+    width: 50%;
+    height: 100%;
+
+}
+
+@media only screen and (max-width: 900px){
+.resimg { 
+   width: 380px;
+   height: 400px;
+    }
+}
+
+.reslog{
+    
+    width: 25%;
+
+}
+
+@media only screen and (max-width: 900px){
+.reslog { 
+   width: auto;
+    }
 }

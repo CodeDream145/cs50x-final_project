@@ -6,11 +6,11 @@
 
 
 {% block body %}
-    <div class="row p-5"></div>
-    <div class="row p-3 mx-auto w-25 ">
+    <div class="row p-4"></div>
+    <div class="row p-3 mx-auto">
         <h6 class="display-6 text-center" style="padding-bottom: 20px; color: rgb(179, 177, 177);">Log In</h6>
         
-        <form action="/login" method="post">
+        <form action="/login" method="post" class="reslog mx-auto">
             {% if name_error %}
             <div class="form-floating mb-3">
                 <input type="text" class="form-control is-invalid" id="floatingInput" autocomplete="off" placeholder="username" name="username" value="{{user_name}}">
