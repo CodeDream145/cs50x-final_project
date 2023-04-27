@@ -40,17 +40,17 @@
                 <tr id="menu_{{loop.index}}">
                     <td>
                         <div class="container-fluid">
-                            <p style="color:rgb(179, 177, 177); font-size: large; word-break: break-word;" id="dish_name_{{loop.index}}">{{row["dish"]}}</p>
+                            <p style="color:rgb(179, 177, 177); font-size: large; white-space: pre-wrap; word-break: break-word;" id="dish_name_{{loop.index}}">{{row["dish"]}}</p>
                         </div>
                     </td>
                     <td>
                         <div class="container">
-                            <p style="color:  rgb(179, 177, 177); font-size: large; word-break: break-word;">20-20-2023</p>
+                            <p style="color:  rgb(179, 177, 177); font-size: large; white-space: pre-wrap; word-break: break-word;">{{row["date"]}}</p>
                         </div>
                     </td>
                     <td>
                         <div class="container">
-                            <p style="color:  rgb(179, 177, 177); font-size: large; word-break: break-word;">{{row["description"]}}</p>
+                            <p style="color:  rgb(179, 177, 177); font-size: large; white-space: pre-wrap; word-break: break-word;">{{row["description"]}}</p>
                         </div>
                     </td>
                     <form action="/eat/remove" method="post">

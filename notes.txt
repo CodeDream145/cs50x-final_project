@@ -1,6 +1,17 @@
 Inside home :
-    Add the video for "what it for" & "about how to use this site" 
+    - backend action for check history
+        - get input from dashboard
+        - if invalid date:
+            -render with invalid status
 
+        -Check for the goals eaten at that date
+        -if no goals:
+            -render with "no goals at that date"
+        -render with goals_eaten
+    
+- repair eat table description -- DONE
+
+    
 --> history in dashboard
 
 @app.route("/history")
@@ -9,7 +20,8 @@ def history():
     eaten_dishes = db.execute("SELECT * FROM dishes WHERE id IN (SELECT dish_id FROM finished_dishes WHERE user_id = ?)", session["user_id"])
     return render_template("eat.html", dishes=eaten_dishes) #as of now...
 
+___________________
 
-    <!-- Use it when The issue is solved<div class="p-2" style="text-align: center;">
-        <img src="static/testing4.gif" class="resimg" rel="guide">
-    </div>-->
+<!-- Use it when The issue is solved<div class="p-2" style="text-align: center;">
+    <img src="static/testing4.gif" class="resimg" rel="guide">
+</div>-->

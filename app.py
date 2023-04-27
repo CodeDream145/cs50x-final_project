@@ -129,7 +129,7 @@ def eat():
         dish = request.form.get("dish")
         description = request.form.get("description")
 
-        dishes = db.execute("SELECT * FROM dishes WHERE id IN (SELECT dish_id FROM user_dishes WHERE user_id == ?)", session["user_id"])
+        dishes = db.execute("SELECT * FROM dishes WHERE id IN (SELECT dish_id FROM user_dishes WHERE user_id = ?)", session["user_id"])
 
         if not dish and not description:
             return render_template("eat.html", name_error="Please Provide Dish Name", des_error="Please Provide Description", dishes=dishes)
@@ -144,14 +144,14 @@ def eat():
             return render_template("eat.html", des_error="Please Provide Description", dishes=dishes, name=dish)
         
                 
-        dish_id = db.execute("INSERT INTO dishes (dish, description) VALUES(?, ?)", dish, description)
+        dish_id = db.execute("INSERT INTO dishes (dish, description, date) VALUES(?, ?, ?)", dish, description, date.today())
         db.execute("INSERT INTO user_dishes (user_id, dish_id) VALUES(?, ?)", session["user_id"], dish_id)        
         
         return redirect("/eat")
     
     if request.method == "GET":
 
-        dishes = db.execute("SELECT * FROM dishes WHERE id IN (SELECT dish_id FROM user_dishes WHERE user_id == ?)", session["user_id"])
+        dishes = db.execute("SELECT * FROM dishes WHERE id IN (SELECT dish_id FROM user_dishes WHERE user_id = ?)", session["user_id"])
         return render_template("eat.html", dishes=dishes)
 
 
@@ -163,7 +163,7 @@ def remove_dish():
         return apology("Trying Something ha...", 400)
     dish_id = db.execute("SELECT id FROM dishes WHERE dish = ?", dish_name)
     db.execute("DELETE FROM user_dishes WHERE dish_id = ?", dish_id[0]["id"])
-    db.execute("INSERT INTO finished_dishes (user_id, dish_id) VALUES(?, ?)", session["user_id"],dish_id[0]["id"] )
+    db.execute("INSERT INTO finished_dishes (user_id, dish_id, date) VALUES(?, ?, ?)", session["user_id"],dish_id[0]["id"], date.today() )
     
     goals_completed  = db.execute("SELECT goals_completed FROM user_status WHERE user_id = ?", session["user_id"])
     db.execute("UPDATE user_status SET goals_completed = ? WHERE user_id = ?", int(goals_completed[0]["goals_completed"]) + 1, session["user_id"])
@@ -197,10 +197,36 @@ def slice():
 
     return render_template("slice.html", current_day = status[0]["current_day"], current_week = status[0]["current_week"], days = days)
 
-@app.route("/dashboard")
+@app.route("/dashboard", methods=["POST", "GET"])
 @login_required
 def dashboard():
+    if request.method == "POST":
+        year = str(request.form.get("year"))
+        month = str(request.form.get("month"))
+        day = str(request.form.get("day"))
+        finished_date = f"{year}-{month}-{day}"
 
+        goal_history = db.execute("SELECT * FROM dishes Where id IN (SELECT dish_id FROM finished_dishes WHERE user_id = ? AND date = ?)", session["user_id"], finished_date)
+        status = db.execute("SELECT * FROM user_status WHERE user_id = ?", session["user_id"])
+
+        months =[]
+        days =[]
+        for x in range(1,10):
+            months.append(f"0{x}")
+            days.append(f"0{x}")
+        for y in range(10, 32):
+            days.append(f"{y}")
+        for z in range(10, 13):
+            months.append(f"{z}")
+
+        if (month not in months) or (day not in days) :
+            return render_template("dashboard.html", status=status, invalid_date= "Invalid Date")
+        
+        if not goal_history:
+            return render_template("dashboard.html", status=status, not_found= f"No Goal was eaten on {year}-{month}-{day}.")
+
+        return render_template("dashboard.html", status=status, goal_history=goal_history)
+    
     status = db.execute("SELECT * FROM user_status WHERE user_id = ?", session["user_id"])
 
     return render_template("dashboard.html", status=status)
@@ -209,3 +235,16 @@ def dashboard():
 @login_required
 def hear():
     return render_template("hear.html")
+
+'''@app.route("/dashboard/history", methods=["POST"])
+@login_required
+def history(): 
+    year = str(request.form.get("year"))
+    month = str(request.form.get("month"))
+    day = str(request.form.get("day"))
+    finished_date = f"{year}-{month}-{day}"
+
+    goal_history = db.execute("SELECT * FROM dishes Where id IN (SELECT dish_id FROM finished_dishes WHERE user_id = ? AND date = ?)", session["user_id"], finished_date)
+    status = db.execute("SELECT * FROM user_status WHERE user_id = ?", session["user_id"])
+
+    return render_template("dashboard.html", status=status, goal_history=goal_history)'''

@@ -42,6 +42,121 @@
             </table>
         </div>
     </div>
+
+    <div class="row p-3 justify-content-center" style="margin-top: 5%;">
+        <h1 class="display-5 text-center" style="color: rgb(179, 177, 177);">Check History</h1>
+        
+        <form action="/dashboard" method="post">
+
+            <div class="row g-3 align-items-center justify-content-center">
+                {% if not invalid_date %}
+                <div class="col-auto">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="year">
+                        <option selected>Year</option>
+                        <option value="2023">2023</option>
+                      </select>                     
+                </div>
+                <div class="col-auto">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="month">
+                        <option selected>Month</option>
+                        {% for month_range in range(1, 10)%}
+                            <option value="0{{month_range}}">0{{month_range}}</option>
+                        {% endfor %}
+                        {% for month_range in range(10, 13)%}
+                        <option value="{{month_range}}">{{month_range}}</option>
+                        {% endfor %}
+                    </select>      
+                </div>
+                <div class="col-auto">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="day">
+                        <option selected>Day</option>
+                        {% for day_range in range(1, 10)%}
+                            <option value="0{{day_range}}">0{{day_range}}</option>
+                        {% endfor %}
+                        {% for day_range in range(10, 32)%}
+                            <option value="{{day_range}}">{{day_range}}</option>
+                        {% endfor %}
+                    </select>      
+                </div>
+
+                {% else %}
+                    <div class="col-auto">
+                        <select class="form-select form-select-sm is-invalid" aria-label=".form-select-sm example" name="year">
+                            <option selected>Year</option>
+                            <option value="2023">2023</option>
+                        </select>                     
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select form-select-sm is-invalid" aria-label=".form-select-sm example" name="month">
+                            <option selected>Month</option>
+                            {% for month_range in range(1, 10)%}
+                                <option value="0{{month_range}}">0{{month_range}}</option>
+                            {% endfor %}
+                            {% for month_range in range(10, 13)%}
+                            <option value="{{month_range}}">{{month_range}}</option>
+                            {% endfor %}
+                        </select>      
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select form-select-sm is-invalid" aria-label=".form-select-sm example" name="day">
+                            <option selected>Day</option>
+                            {% for day_range in range(1, 10)%}
+                                <option value="0{{day_range}}">0{{day_range}}</option>
+                            {% endfor %}
+                            {% for day_range in range(10, 32)%}
+                                <option value="{{day_range}}">{{day_range}}</option>
+                            {% endfor %}
+                        </select>      
+                    </div>
+                        <p style="color: red; font-size: smaller; font-weight: lighter; text-align: center;">{{invalid_date}}</p>
+                {% endif %}
+            </div>
+            <div class="row p-2 justify-content-center">
+                <button type="submit" class="btn btn-warning" style="width: fit-content; background-color: #ffa552; border-color: #eda45e;">Check</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="row p-2 mb-3 blackbg"></div>
+        
+    {% if goal_history %}
+                
+            <table class="table table-bordered" style="table-layout: auto; color: rgba(138, 138, 138, 0.84);">
+                <thead class="table-dark">
+                    <tr style="text-align: center;">
+                        <td style="width: 15%;">Dish</td>
+                        <td style="width: 10%;">Eaten Date</td>
+                        <td style="width: 75%;">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in goal_history %}
+                    
+                    <tr>
+                        <td>
+                            <div class="container-fluid">
+                                <p style="color:rgb(179, 177, 177); font-size: large; word-break: break-word;" >{{row["dish"]}}</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="container">
+                                <p style="color:  rgb(179, 177, 177); font-size: large; word-break: break-word;">{{row["date"]}}</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="container">
+                                <p style="color:  rgb(179, 177, 177); font-size: large; word-break: break-word;">{{row["description"]}}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+            </table>
+        {% elif not_found %}
+           <h1 class="display-3" style="color: rgb(179, 177, 177); text-align: center;">"{{not_found}}"</h1> 
+        {% endif %}
+    </div>
+    
     
     <div class="row p-3 blackbg" style="height: 100%;">
     </div>
