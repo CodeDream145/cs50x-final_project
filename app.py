@@ -144,7 +144,7 @@ def eat():
             return render_template("eat.html", des_error="Please Provide Description", dishes=dishes, name=dish)
         
                 
-        dish_id = db.execute("INSERT INTO dishes (dish, description, date) VALUES(?, ?, ?)", dish, description, date.today())
+        dish_id = db.execute("INSERT INTO dishes (dish, description, date) VALUES(?, ?, ?)", dish, description, str(date.today()))
         db.execute("INSERT INTO user_dishes (user_id, dish_id) VALUES(?, ?)", session["user_id"], dish_id)        
         
         return redirect("/eat")
@@ -235,16 +235,3 @@ def dashboard():
 @login_required
 def hear():
     return render_template("hear.html")
-
-'''@app.route("/dashboard/history", methods=["POST"])
-@login_required
-def history(): 
-    year = str(request.form.get("year"))
-    month = str(request.form.get("month"))
-    day = str(request.form.get("day"))
-    finished_date = f"{year}-{month}-{day}"
-
-    goal_history = db.execute("SELECT * FROM dishes Where id IN (SELECT dish_id FROM finished_dishes WHERE user_id = ? AND date = ?)", session["user_id"], finished_date)
-    status = db.execute("SELECT * FROM user_status WHERE user_id = ?", session["user_id"])
-
-    return render_template("dashboard.html", status=status, goal_history=goal_history)'''
