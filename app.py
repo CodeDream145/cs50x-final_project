@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, request, session, flash
 from cs50 import SQL
 from flask_session import Session
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime, timedelta
+from datetime import date, timedelta
 
 from helpers import login_required, apology
 
@@ -145,11 +145,7 @@ def eat():
         
                 
         dish_id = db.execute("INSERT INTO dishes (dish, description) VALUES(?, ?)", dish, description)
-        db.execute("INSERT INTO user_dishes (user_id, dish_id) VALUES(?, ?)", session["user_id"], dish_id)
-        goals_completed  = db.execute("SELECT goals_completed FROM user_status WHERE user_id = ?", session["user_id"])
-
-        db.execute("UPDATE user_status SET goals_completed = ? WHERE user_id = ?", int(goals_completed[0]["goals_completed"]) + 1, session["user_id"])
-        
+        db.execute("INSERT INTO user_dishes (user_id, dish_id) VALUES(?, ?)", session["user_id"], dish_id)        
         
         return redirect("/eat")
     
@@ -168,6 +164,9 @@ def remove_dish():
     dish_id = db.execute("SELECT id FROM dishes WHERE dish = ?", dish_name)
     db.execute("DELETE FROM user_dishes WHERE dish_id = ?", dish_id[0]["id"])
     db.execute("INSERT INTO finished_dishes (user_id, dish_id) VALUES(?, ?)", session["user_id"],dish_id[0]["id"] )
+    
+    goals_completed  = db.execute("SELECT goals_completed FROM user_status WHERE user_id = ?", session["user_id"])
+    db.execute("UPDATE user_status SET goals_completed = ? WHERE user_id = ?", int(goals_completed[0]["goals_completed"]) + 1, session["user_id"])
     return redirect("/eat")
 
 @app.route("/slice", methods=["GET", "POST"])
