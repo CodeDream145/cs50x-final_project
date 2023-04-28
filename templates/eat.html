@@ -15,8 +15,8 @@
             <div class="card card-body blackbg about_text" style="color: rgba(138, 138, 138, 0.804);border-color:#d5ad35; ">
                 <p>Before I am what I am now, I was always in search of a single question: Why am I not doing things that will make me better?". During my practise of this method, I found that I did not have enough reason and did not know what I wanted to do really. And I inserted a new step to this method taken from the book "Eat that Frog".<br>And here it is:</p>
                 <p>&#36; Write down what you want to do inside the dish table and add it to your stack of dishes.</p>
-                <p>&#36; The dish may be your goal or the thing you want to do today (only today). As this method focuses only on one day.</p> 
-                <p>&#36; Name your dish and describe it clearly and briefly.</p> 
+                <p>&#36; The dish may be your goal or the thing you want to do today. I recommend you first focus on one day.</p> 
+                <p>&#36; Name your dish and describe how you are going to finish(eat) it.</p> 
                 <p>&#36; And eat it when you have done it.</p>
             </div>
           </div>
@@ -28,7 +28,7 @@
 
             <thead class="table-dark">
                 <tr style="text-align: center;">
-                    <td style="width: 15%;">Dish</td>
+                    <td style="width: 15%;">Dishes (Goals)</td>
                     <td style="width: 10%;">Date</td>
                     <td style="width: 70%;">Description</td>
                     <td style="width: 5%;">Eat it!</td>
@@ -75,7 +75,7 @@
         <form action="/eat" method="post" style="padding-bottom: 40px;">
             {% if name_error %}
             <div class="mb-3 w-25">
-                <label for="dish" class="form-label" style="color: rgb(179, 177, 177);">Dish</label>
+                <label for="dish" class="form-label" style="color: rgb(179, 177, 177);">Dish (Goal)</label>
                 <input type="text" class="form-control col-sm-10 is-invalid" style="background-color:  rgb(167, 166, 166);" id="dish" placeholder="Name" name="dish">
                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     {{name_error}}
@@ -83,7 +83,7 @@
             </div>
             {% else %}
             <div class="mb-3 w-25">
-                <label for="dish" class="form-label" style="color: rgb(179, 177, 177);">Dish</label>
+                <label for="dish" class="form-label" style="color: rgb(179, 177, 177);">Dish (Goal)</label>
                 <input style="background-color:  rgb(167, 166, 166); color: black;" type="text" class="form-control col-sm-10 " id="dish" placeholder="Name" name="dish" value="{{name}}">
             </div>
             {% endif %}
@@ -91,7 +91,7 @@
             {% if des_error %}
             <div class="mb-3 w-75">
                 <label for="description" class="form-label" style="color: rgb(179, 177, 177);">How to Eat it !</label>
-                <textarea class="form-control is-invalid" id="description" name="description" placeholder="Description about your dish" rows="3" style="background-color: rgb(167, 167, 166); color: black;">{{description}}</textarea>
+                <textarea class="form-control is-invalid" id="description" name="description" placeholder="Description or Plans" rows="3" style="background-color: rgb(167, 167, 166); color: black;">{{description}}</textarea>
                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     {{des_error}}
                   </div>
@@ -99,7 +99,7 @@
             {% else %}
             <div class="mb-3 w-75">
                 <label for="description" class="form-label" style="color: rgb(179, 177, 177);">How to Eat it !</label>
-                <textarea class="form-control" id="description" name="description" placeholder="Description about your dish" rows="3" style="background-color:  rgb(167, 166, 166); color: black;">{{description}}</textarea>
+                <textarea class="form-control" id="description" name="description" placeholder="Description or Plans" rows="3" style="background-color:  rgb(167, 166, 166); color: black;">{{description}}</textarea>
             </div>
             {% endif %}
 

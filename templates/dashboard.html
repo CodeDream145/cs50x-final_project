@@ -16,6 +16,7 @@
             <div class="card card-body blackbg about_text" style="color: rgb(179, 177, 177);border-color:#d08036; ">
                 <p>&#36; You are on the your Road.</p>
                 <p>&#36; See how well you are rinding on your own road.</p>
+                <p>&#36; You may also look up the goals that have been eaten. Search for it by just by entering the valid date below.</p>
             </div>
         </div>
     </div>
@@ -44,9 +45,9 @@
     </div>
 
     <div class="row p-3 justify-content-center" style="margin-top: 5%;">
-        <h1 class="display-5 text-center" style="color: rgb(179, 177, 177);">Check History</h1>
+        <h1 class="display-5 text-center" style="color: rgb(179, 177, 177);">Goals Eaten</h1>
         
-        <form action="/dashboard" method="post">
+        <form action="/dashboard" method="post" style="margin-top: 15px;">
 
             <div class="row g-3 align-items-center justify-content-center">
                 {% if not invalid_date %}
@@ -112,7 +113,7 @@
                 {% endif %}
             </div>
             <div class="row p-2 justify-content-center">
-                <button type="submit" class="btn btn-warning" style="width: fit-content; background-color: #ffa552; border-color: #eda45e;">Check</button>
+                <button type="submit" class="btn btn-warning" style="width: fit-content; background-color: #ffa552; border-color: #eda45e;">Search</button>
             </div>
         </form>
     </div>
@@ -150,7 +151,7 @@
                         </td>
                     </tr>
                     {% endfor %}
-            </tbody>
+                </tbody>
             </table>
         {% elif not_found %}
            <h1 class="display-3" style="color: rgb(179, 177, 177); text-align: center;">"{{not_found}}"</h1> 
